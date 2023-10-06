@@ -61,23 +61,6 @@
 
     <script>
         function calculate() {
-            <!DOCTYPE html>
-<html>
-<head>
-    <title>입력 받기</title>
-</head>
-<body>
-    <input type="text" id="mutong" placeholder="무통 억당 가격"><br>
-    <input type="text" id="market" placeholder="메소마켓 억당 가격"><br>
-    <input type="text" id="susu" placeholder="수수료 비율 (%)"><br>
-    <input type="text" id="halin" placeholder="넥슨카드 할인율 (%)"><br>
-    <input type="text" id="money" placeholder="결제 금액 (원)"><br>
-    <button onclick="calculate()">계산</button>
-
-    <div id="result"></div>
-
-    <script>
-        function calculate() {
             const mutong = parseInt(document.getElementById("mutong").value);
             const market = parseInt(document.getElementById("market").value);
             const susu = parseInt(document.getElementById("susu").value);
@@ -102,11 +85,6 @@
             `;
 
             document.getElementById("result").innerHTML = result;
-        }
-    </script>
-</body>
-</html>
-
         }
     </script>
 </body>
