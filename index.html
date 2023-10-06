@@ -1,6 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>둥글둥글한 웹사이트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFA500; /* 주황색 배경 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 20px; /* 둥글게 만드는 속성 */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #FFA500; /* 주황색 테두리 */
+            border-radius: 10px; /* 둥글게 만드는 속성 */
+        }
+
+        button {
+            background-color: #FFA500; /* 주황색 버튼 배경 */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px; /* 둥글게 만드는 속성 */
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #FF8C00; /* 버튼 호버 시 색 변경 */
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>둥글둥글한 웹사이트</h1>
+        <input type="text" id="mutong" placeholder="무통 억당 가격"><br>
+        <input type="text" id="market" placeholder="메소마켓 억당 가격"><br>
+        <input type="text" id="susu" placeholder="수수료 비율 (%)"><br>
+        <input type="text" id="halin" placeholder="넥슨카드 할인율 (%)"><br>
+        <input type="text" id="money" placeholder="결제 금액 (원)"><br>
+        <button onclick="calculate()">계산</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            <!DOCTYPE html>
+<html>
+<head>
     <title>입력 받기</title>
 </head>
 <body>
@@ -28,8 +91,8 @@
             const mt_total = mt_uk * (1 - 0.01 * susu);
             const mk_total = Math.floor(money / market);
 
-            const mt_per = (money - mt_cha) / mt_total;
-            const mk_per = (money * (1 - 0.01 * halin) - mk_cha) / mk_total;
+            const mt_per = Math.round((money - mt_cha) / mt_total);
+            const mk_per = Math.round((money * (1 - 0.01 * halin) - mk_cha) / mk_total);
 
             const result = `
                 무통 획득 금액 : ${mt_total}<br>
@@ -39,6 +102,11 @@
             `;
 
             document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
+
         }
     </script>
 </body>
