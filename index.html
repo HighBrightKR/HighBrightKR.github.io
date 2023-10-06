@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>둥글둥글한 웹사이트</title>
+    <title>메소마켓 vs 무통 비교</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #FFA500; /* 주황색 배경 */
+            font-family: 'Nanum Gothic';
+            background-color: #FFA500; 
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,7 +25,7 @@
         }
 
         input[type="text"] {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin-bottom: 10px;
             border: 2px solid #FFA500; /* 주황색 테두리 */
@@ -30,6 +33,7 @@
         }
 
         button {
+            width: 97%;
             background-color: #FFA500; /* 주황색 버튼 배경 */
             color: white;
             padding: 10px 20px;
@@ -49,11 +53,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>둥글둥글한 웹사이트</h1>
+        <h1>메소 마켓 vs 무통 거래</h1>
         <input type="text" id="mutong" placeholder="무통 억당 가격"><br>
         <input type="text" id="market" placeholder="메소마켓 억당 가격"><br>
-        <input type="text" id="susu" placeholder="수수료 비율 (%)"><br>
-        <input type="text" id="halin" placeholder="넥슨카드 할인율 (%)"><br>
+        <input type="text" id="susu" placeholder="경매장/거래 수수료 비율 (%)"><br>
+        <input type="text" id="halin" placeholder="상품권 구매 할인율 (%)"><br>
         <input type="text" id="money" placeholder="결제 금액 (원)"><br>
         <button onclick="calculate()">계산</button>
         <div id="result"></div>
@@ -73,15 +77,19 @@
 
             const mt_total = mt_uk * (1 - 0.01 * susu);
             const mk_total = Math.floor(money / market);
-
+            
+            const mt_sobi = mt_uk * mutong;
+            const mk_sobi = mk_total * market;
             const mt_per = Math.round((money - mt_cha) / mt_total);
             const mk_per = Math.round((money * (1 - 0.01 * halin) - mk_cha) / mk_total);
 
             const result = `
-                무통 획득 금액 : ${mt_total}<br>
-                메마 획득 금액 : ${mk_total}<br>
-                무통 1억당 : ${mt_per}<br>
-                메마 1억당 : ${mk_per}
+                무통 거래 소비 금액 (원): ${mt_sobi}<br>
+                메소 마켓 소비 금액 (원): ${mk_sobi}<br>
+                무통 거래 획득 금액 (억 메소): ${mt_total}<br>
+                메소 마켓 획득 금액 (억 메소): ${mk_total}<br>
+                무통 거래 1억당 (원): ${mt_per}<br>
+                메소 마켓 1억당 (원): ${mk_per}
             `;
 
             document.getElementById("result").innerHTML = result;
